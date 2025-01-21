@@ -42,18 +42,18 @@ function Values() {
   const values = [
     {
       title: "Quantitative Analysis",
-      description: "Ranked 19th in NUS Alphathon 2024. Created 100+ financial models at WorldQuant BRAIN.",
-      image: "/img/analysis.webp",
+      description: "Created 100+ financial models at WorldQuant BRAIN, analyzing 120,000+ fields across diverse financial instruments. Ranked 19th in NUS Alphathon 2024.",
+      icon: "carbon:chart-line",
     },
     {
       title: "Full Stack Development",
-      description: "Built academic forums and healthcare applications using React, Go, and modern frameworks.",
-      image: "/img/development.webp",
+      description: "Built scalable applications using React, Express.js, Golang, PostgreSQL, and modern testing frameworks like Playwright and Selenium.",
+      icon: "logos:react",
     },
     {
       title: "Mathematical Modeling",
-      description: "Received honors in International Math Modeling Competition. Top 8 finalist in Vietnam.",
-      image: "/img/math.webp",
+      description: "Received Honorable Mention in International Math Modeling Competition 2023. Top 8 finalist in Vietnam Math Modeling Competition.",
+      icon: "carbon:model-alt",
     },
   ];
 
@@ -71,9 +71,12 @@ function Values() {
                 }`}
               >
                 <div className="p-6">
-                  <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">
-                    {value.title}
-                  </h2>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Icon icon={value.icon} className="w-8 h-8 text-primary" />
+                    <h2 className="text-xl font-bold text-gray-800 dark:text-white">
+                      {value.title}
+                    </h2>
+                  </div>
                   <p className="text-gray-600 dark:text-gray-300">
                     {value.description}
                   </p>
@@ -157,7 +160,7 @@ function Projects() {
   const projects = [
     {
       title: "Student Hub Singapore",
-      description: "Academic forum platform built with React, TypeScript, Go, and PostgreSQL",
+      description: "Full-stack academic forum platform using React, TypeScript, Go, and PostgreSQL. Features secure authentication with JWT tokens and bcrypt, integrated with Supabase for database management. Built responsive UI using Tailwind CSS and Framer Motion. Deployed on Vercel with automated CI/CD pipeline, achieving 99% uptime.",
       link: "https://student-hub-frontend.vercel.app/",
       type: "Full Stack",
       icon: "logos:react"
@@ -207,11 +210,14 @@ function Technologies() {
     "logos:typescript-icon",
     "logos:go",
     "logos:postgresql",
-    "vscode-icons:file-type-js-official",
-    "logos:tailwindcss-icon",
     "logos:express",
+    "logos:tailwindcss-icon",
     "logos:playwright",
-    "logos:docker-icon"
+    "logos:selenium",
+    "logos:supabase-icon",
+    "logos:framer",
+    "logos:jwt-icon",
+    "logos:vercel-icon"
   ];
 
   return (
@@ -237,12 +243,15 @@ function Technologies() {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <Hero />
-      <Values />
-      <Projects />
-      <Experience />
-      <Technologies />
+    <div className="min-h-screen bg-gradient-to-br from-base-100 to-base-200 relative">
+      <div className="absolute inset-0 bg-[url('/background.webp')] opacity-10 bg-cover bg-center bg-no-repeat pointer-events-none"></div>
+      <div className="relative z-10">
+        <Hero />
+        <Values />
+        <Projects />
+        <Experience />
+        <Technologies />
+      </div>
     </div>
   );
 }

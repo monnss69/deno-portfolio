@@ -6,22 +6,17 @@ import { useEffect, useState } from "preact/hooks";
 loadIcon("fa6-brands:dev");
 loadIcon("ri:dice-line");
 
-function toggleTheme(themes: string[]) {
+function toggleTheme() {
   const html = document.querySelector("html");
   const theme = html?.getAttribute("data-theme");
-  // assign a random theme except the current one
-  const filteredThemes = themes.filter((t) => t !== theme);
-  const randomTheme = filteredThemes[Math.floor(Math.random() * themes.length)];
-
-  html?.setAttribute("data-theme", randomTheme);
-  localStorage.setItem("theme", randomTheme);
+  const newTheme = theme === "modern" ? "light" : "modern";
+  html?.setAttribute("data-theme", newTheme);
+  localStorage.setItem("theme", newTheme);
 }
 export default function AppBar() {
-  const [themes, setThemes] = useState([]);
   useEffect(() => {
-    axios.get("/api/themes").then((res) => {
-      setThemes(res.data);
-    });
+    const savedTheme = localStorage.getItem("theme") || "modern";
+    document.querySelector("html")?.setAttribute("data-theme", savedTheme);
   }, []);
 
   return (
@@ -48,7 +43,7 @@ export default function AppBar() {
           <button
             class="btn"
             aria-label="change Theme"
-            onClick={() => toggleTheme(themes)}
+            onClick={toggleTheme}
           >
             <Icon
               class="active:animate-spin"
