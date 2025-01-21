@@ -9,15 +9,15 @@ function MetaTags(
     <>
       {/* Primary Meta Tags */}
       <title>
-        ${credentials.name} - Experienced Web Developer | Full Portfolio
+        ${credentials.name} - Developer's Codefolio
       </title>
       <meta
         name="title"
-        content={`${credentials.name} - Experienced Web Developer | Full Portfolio`}
+        content={`${credentials.name} - Developer's Codefolio`}
       />
       <meta
         name="description"
-        content={`Explore ${credentials.name}'s portfolio showcasing a diverse range of web development projects. Specializing in full-stack development with expertise in JavaScript, React, Node.js, and more. Discover how I can bring your web vision to life.`}
+        content={`My name is Pham Hai Minh. Explore my portfolio showcasing a diverse range of web development projects. Specializing in full-stack development with expertise in JavaScript, React, Node.js, and more. Discover how I can bring your web vision to life.`}
       />
 
       {/* Open Graph / Facebook */}
@@ -25,34 +25,16 @@ function MetaTags(
       <meta property="og:url" content={`${url}`} />
       <meta
         property="og:title"
-        content={`${credentials.name} - Experienced Web Developer | Full Portfolio`}
+        content={`${credentials.name} - Developer's Codefolio`}
       />
       <meta
         property="og:description"
-        content={`Explore ${credentials.name}'s portfolio showcasing a diverse range of web development projects. Specializing in full-stack development with expertise in JavaScript, React, Node.js, and more. Discover how I can bring your web vision to life.`}
+        content={`My name is Pham Hai Minh. Explore my portfolio showcasing a diverse range of web development projects. Specializing in full-stack development with expertise in JavaScript, React, Node.js, and more. Discover how I can bring your web vision to life.`}
       />
       <meta
         property="og:image"
         content={`${url}meta-image.webp`}
       />
-
-      {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={`${url}`} />
-      <meta
-        property="twitter:title"
-        content={`${credentials.name} - Experienced Web Developer | Full Portfolio`}
-      />
-      <meta
-        property="twitter:description"
-        content={`Explore ${credentials.name}'s portfolio showcasing a diverse range of web development projects. Specializing in full-stack development with expertise in JavaScript, React, Node.js, and more. Discover how I can bring your web vision to life.`}
-      />
-      <meta
-        property="twitter:image"
-        content={`${url}meta-image.webp`}
-      />
-
-      {/* Meta Tags Generated with https://metatags.io */}
     </>
   );
 }
@@ -61,23 +43,18 @@ export default function App({ Component }: PageProps) {
   const socials = [
     {
       name: "GitHub",
-      url: "https://github.com/michael-pfister/deno-portfolio",
+      url: "https://github.com/monnss69",
       icon: "fa-brands:github",
     },
     {
-      name: "Twitter",
-      url: "https://twitter.com/ScaredToCompile",
-      icon: "fa-brands:twitter",
-    },
-    {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/michael-pascal-pfister",
+      url: "https://www.linkedin.com/in/ph%E1%BA%A1m-h%E1%BA%A3i-minh-74950829b/",
       icon: "fa-brands:linkedin",
     },
   ];
 
   const credentials = {
-    name: "John Doe",
+    name: "Pham Hai Minh",
   };
 
   const url = "https://opensource-portfolio.deno.dev/";
@@ -99,19 +76,9 @@ export default function App({ Component }: PageProps) {
           <Component />
         </main>
         <footer class="mt-auto footer w-auto m-2 p-4 bg-neutral text-neutral-content rounded-lg">
-          <aside>
-            <span>MIT licensed with ❤️ by Michael</span>
-            <span>
-              3D Art by{" "}
-              <a
-                class="underline"
-                href="https://sketchfab.com/KJLOYH"
-                target="_blank"
-              >
-                Valery Kharitonov
-              </a>
-            </span>
-          </aside>
+          <p class="text-center">
+            Redesigned by {credentials.name}
+          </p>
           <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
             {socials.map((social) => (
               <a
