@@ -8,7 +8,6 @@ import * as $api_joke from "./routes/api/joke.ts";
 import * as $api_themes_index from "./routes/api/themes/index.ts";
 import * as $index from "./routes/index.tsx";
 import * as $AppBar from "./islands/AppBar.tsx";
-import * as $SpinningModel from "./islands/SpinningModel.tsx";
 import * as $TypingAnimation from "./islands/TypingAnimation.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -22,7 +21,6 @@ const manifest = {
   },
   islands: {
     "./islands/AppBar.tsx": $AppBar,
-    "./islands/SpinningModel.tsx": $SpinningModel,
     "./islands/TypingAnimation.tsx": $TypingAnimation,
   },
   baseUrl: import.meta.url,

@@ -1,244 +1,199 @@
-import SpinningModel from "../islands/SpinningModel.tsx";
 import TypingAnimation from "../islands/TypingAnimation.tsx";
 import { Icon, loadIcons } from "@iconify-icon/react";
 import Wave from "../components/Wave.tsx";
 
-// preload icons
+// Preload icons for technologies
 loadIcons([
   "majesticons:suitcase",
   "tabler:calendar-filled",
   "carbon:location-filled",
-  "logos:deno",
-  "logos:vue",
-  "vscode-icons:file-type-js-official",
-  "vscode-icons:file-type-js-official",
-  "logos:html-5",
-  "logos:css-3",
-  "logos:php",
+  "logos:react",
   "logos:typescript-icon",
-  "skill-icons:react-dark",
-  "devicon:nextjs",
-  "skill-icons:nuxtjs-dark",
-  "logos:nestjs",
-  "logos:fresh",
-  "skill-icons:laravel-dark",
-  "skill-icons:tailwindcss-dark",
-  "devicon:nodejs",
-  "vscode-icons:file-type-mongo",
+  "logos:go",
   "logos:postgresql",
-  "logos:mariadb-icon",
-  "skill-icons:cassandra-light",
-  "skill-icons:docker",
+  "vscode-icons:file-type-js-official",
+  "logos:tailwindcss-icon",
+  "logos:express",
+  "logos:playwright",
+  "logos:docker-icon",
+  "carbon:chart-line",
+  "carbon:model-alt"
 ]);
 
 function Hero() {
   return (
-    <section class="p-4 flex justify-evenly items-center flex-wrap">
-      <div class="max-w-sm mt-8">
-        <h1 class="text-4xl font-bold text-primary">
+    <div className="container mx-auto px-4 py-16">
+      <div className="max-w-2xl">
+        <h1 className="text-5xl font-bold text-primary">
           <TypingAnimation
-            strings={[
-              '"Hello, World!"',
-              "I'm a developer.",
-            ]}
+            strings={['"Hello, World!"', "I'm Minh.", "I'm a Developer."]}
             autoStart={true}
           />
         </h1>
-        <p class="text-xl mt-4">
-          I build web applications and websites using modern technologies.
+        <p className="text-xl mt-4 text-gray-600 dark:text-gray-300">
+          Computer Science student at NUS specializing in full-stack development, test automation, and quantitative analysis.
         </p>
       </div>
-      <SpinningModel />
-    </section>
+    </div>
   );
 }
 
-interface Value {
-  title: string;
-  description: string;
-  image: string;
-}
-
 function Values() {
-  const values: Value[] = [
+  const values = [
     {
-      title: "Passion for Continuous Learning",
-      description:
-        "I actively seek out new technologies and stay up-to-date with industry trends.",
-      image: "/img/pexels-pixabay-159711.webp",
+      title: "Quantitative Analysis",
+      description: "Ranked 19th in NUS Alphathon 2024. Created 100+ financial models at WorldQuant BRAIN.",
+      image: "/img/analysis.webp",
     },
     {
-      title: "User-Centric Approach",
-      description:
-        "My goal is to create user-friendly applications that solve real-world problems.",
-      image: "/img/pexels-picjumbo-com-55570-196644.webp",
+      title: "Full Stack Development",
+      description: "Built academic forums and healthcare applications using React, Go, and modern frameworks.",
+      image: "/img/development.webp",
     },
     {
-      title: "Collaboration and Communication",
-      description:
-        "I excel in team environments and communicate effectively with stakeholders.",
-      image: "/img/pexels-fauxels-3184418.webp",
+      title: "Mathematical Modeling",
+      description: "Received honors in International Math Modeling Competition. Top 8 finalist in Vietnam.",
+      image: "/img/math.webp",
     },
   ];
 
   return (
     <>
       <Wave flip={false} />
-      <section class="p-4 flex justify-center items-center gap-4 flex-wrap bg-primary">
-        {values.map((value, i) => (
-          <div
-            class={"card md:h-auto md:max-w-64 bg-base-100 flex-row md:flex-col shadow-lg" +
-              (i % 2 ? " md:-translate-y-8" : "")}
-          >
-            <figure class="w-1/3 md:h-48 md:w-auto rounded-none rounded-l-box md:rounded-none md:rounded-t-box">
-              <img
-                class="w-full h-full object-cover"
-                src={value.image}
-                alt={value.title}
-              />
-            </figure>
-            <div class="card-body w-2/3 md:w-auto">
-              <h2 class="card-title">{value.title}</h2>
-              <p>{value.description}</p>
-            </div>
+      <section className="bg-primary py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {values.map((value, i) => (
+              <div
+                key={i}
+                className={`bg-white dark:bg-gray-800 rounded-lg shadow-xl transform transition-all duration-300 hover:scale-105 ${
+                  i % 2 ? "md:translate-y-8" : ""
+                }`}
+              >
+                <div className="p-6">
+                  <h2 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">
+                    {value.title}
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {value.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </section>
       <Wave flip={true} />
     </>
   );
 }
 
-interface Experience {
-  title: string;
-  company: string;
-  timePeriod: string;
-  location: string;
-}
-
 function Experience() {
-  const experiences: Experience[] = [
+  const experiences = [
     {
-      title: "Full Stack Web Developer",
-      company: "AST Advanced Sales Technologies GmbH",
-      timePeriod: "Sep 2023 - Apr 2024",
-      location: "Vienna, Austria",
+      title: "Research Consultant",
+      company: "WorldQuant BRAIN",
+      timePeriod: "Nov 2024 - Present",
+      location: "Remote",
+      highlights: ["Created 100+ quantitative financial models", "Analyzed 120,000+ financial data fields"]
     },
     {
-      title: "Junior Web Developer",
-      company: "AST Advanced Sales Technologies GmbH",
-      timePeriod: "Feb 2023 - Sep 2023",
-      location: "Vienna, Austria",
-    },
+      title: "Junior Research Assistant (QA)",
+      company: "NUS TeleHealthCore",
+      timePeriod: "Sep 2024 - Present",
+      location: "Singapore",
+      highlights: ["Built full-stack app with React & Express.js", "Developed Playwright testing framework"]
+    }
   ];
 
   return (
-    <section class="p-4 flex flex-wrap-reverse justify-evenly items-center gap-4">
-      <div class="flex flex-col">
-        {experiences.map((experience, i) => (
-          <>
-            {i > 0 &&
-              (
-                <div class="flex flex-col gap-2 ml-8 my-2">
-                  {[...Array(3)].map(() => (
-                    <span className="w-1 aspect-square bg-gray-500 rounded-full" />
-                  ))}
-                </div>
+    <section className="container mx-auto px-4 py-16">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-12">
+        <h1 className="text-4xl font-bold text-primary text-center md:text-left">
+          Work Experience
+        </h1>
+        <div className="flex-1 max-w-2xl">
+          {experiences.map((experience, i) => (
+            <div key={i} className="relative">
+              {i > 0 && (
+                <div className="absolute left-4 -top-6 h-6 w-px bg-gray-300 dark:bg-gray-600" />
               )}
-
-            <div class="card">
-              <div class="card-body p-4">
-                <h2 class="card-title">{experience.title}</h2>
-                <span class="flex items-center gap-2 text-gray">
-                  <Icon
-                    icon="majesticons:suitcase"
-                    width="none"
-                    height="none"
-                  />
-                  {experience.company}
-                </span>
-                <span class="flex items-center gap-2 text-gray">
-                  <Icon
-                    icon="tabler:calendar-filled"
-                    width="none"
-                    height="none"
-                  />
-                  {experience.timePeriod}
-                </span>
-                <span class="flex items-center gap-2 text-gray">
-                  <Icon
-                    icon="carbon:location-filled"
-                    width="none"
-                    height="none"
-                  />
-                  {experience.location}
-                </span>
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+                <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
+                  {experience.title}
+                </h2>
+                <div className="space-y-2 text-gray-600 dark:text-gray-300">
+                  <span className="flex items-center gap-2">
+                    <Icon icon="majesticons:suitcase" className="w-5 h-5 text-primary" />
+                    {experience.company}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Icon icon="tabler:calendar-filled" className="w-5 h-5 text-primary" />
+                    {experience.timePeriod}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Icon icon="carbon:location-filled" className="w-5 h-5 text-primary" />
+                    {experience.location}
+                  </span>
+                  <ul className="mt-4 space-y-2">
+                    {experience.highlights.map((highlight, j) => (
+                      <li key={j} className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-          </>
-        ))}
+          ))}
+        </div>
       </div>
-      <h1 class="text-3xl font-bold text-primary">Work Experience</h1>
     </section>
   );
 }
 
-interface Project {
-  title: string;
-  description: string;
-  link: string;
-  type: string;
-  icon: string;
-}
-
 function Projects() {
-  const projects: Project[] = [
+  const projects = [
     {
-      title: "Denoland Fresh",
-      description:
-        "Fresh is a full stack modern web framework for JavaScript and TypeScript developers.",
-      link: "https://fresh.deno.dev/",
-      type: "Open Source",
-      icon: "logos:deno",
-    },
-    {
-      title: "Dogr.",
-      description:
-        "Dogr is a web application I developed to hone my skills in Nuxt and Vue.",
-      link: "https://dogr.vercel.app/",
-      type: "Personal",
-      icon: "logos:vue",
-    },
+      title: "Student Hub Singapore",
+      description: "Academic forum platform built with React, TypeScript, Go, and PostgreSQL",
+      link: "https://student-hub-frontend.vercel.app/",
+      type: "Full Stack",
+      icon: "logos:react"
+    }
   ];
 
   return (
-    <section class="p-4 my-8">
-      <h1 class="text-3xl font-bold text-primary text-center mb-4">
-        Projects and Contributions
+    <section className="container mx-auto px-4 py-16">
+      <h1 className="text-4xl font-bold text-primary text-center mb-12">
+        Projects
       </h1>
-      <div class="flex flex-wrap justify-center items-center gap-2">
-        {projects.map((project) => (
-          <div class="card max-w-96">
-            <div class="card-body p-4">
-              <h2 class="card-title">
-                <Icon
-                  class="w-6 h-6"
-                  icon={project.icon}
-                  width="none"
-                  height="none"
-                />
+      <div className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-4xl mx-auto">
+        {projects.map((project, i) => (
+          <div
+            key={i}
+            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transform transition-all duration-300 hover:scale-105"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <Icon className="w-8 h-8" icon={project.icon} />
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
                 {project.title}
-                <span class="badge badge-ghost ml-auto">{project.type}</span>
               </h2>
-              <p>{project.description}</p>
-              <a
-                href={project.link}
-                target="_blank"
-                class="btn btn-primary text-base-100"
-              >
-                View Project
-              </a>
+              <span className="ml-auto px-3 py-1 text-sm bg-primary/10 text-primary rounded-full">
+                {project.type}
+              </span>
             </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
+              {project.description}
+            </p>
+            <a
+              href={project.link}
+              target="_blank"
+              className="btn btn-primary"
+            >
+              View Project
+            </a>
           </div>
         ))}
       </div>
@@ -248,42 +203,33 @@ function Projects() {
 
 function Technologies() {
   const technologies = [
-    "vscode-icons:file-type-js-official",
-    "logos:html-5",
-    "logos:css-3",
-    "logos:php",
+    "logos:react",
     "logos:typescript-icon",
-    "skill-icons:react-dark",
-    "logos:vue",
-    "devicon:nextjs",
-    "skill-icons:nuxtjs-dark",
-    "logos:nestjs",
-    "logos:fresh",
-    "skill-icons:laravel-dark",
-    "skill-icons:tailwindcss-dark",
-    "logos:deno",
-    "devicon:nodejs",
-    "vscode-icons:file-type-mongo",
+    "logos:go",
     "logos:postgresql",
-    "logos:mariadb-icon",
-    "skill-icons:cassandra-light",
-    "skill-icons:docker",
+    "vscode-icons:file-type-js-official",
+    "logos:tailwindcss-icon",
+    "logos:express",
+    "logos:playwright",
+    "logos:docker-icon"
   ];
 
   return (
-    <section class="my-16">
-      <h1 class="text-3xl font-bold text-primary text-center mb-4">
+    <section className="container mx-auto px-4 py-16">
+      <h1 className="text-4xl font-bold text-primary text-center mb-12">
         Technologies
       </h1>
-      <div class="p-4 flex justify-center items-center flex-wrap gap-4">
-        {technologies.map((technology) => (
-          <Icon
-            class="w-8 h-8"
-            icon={technology}
-            width="none"
-            height="none"
-          />
-        ))}
+      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg max-w-3xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-4">
+          {technologies.map((technology, i) => (
+            <div
+              key={i}
+              className="group relative flex items-center justify-center w-16 h-16 transform transition-all duration-300 hover:scale-110 hover:z-10"
+            >
+              <Icon className="w-12 h-12" icon={technology} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -291,12 +237,12 @@ function Technologies() {
 
 export default function Home() {
   return (
-    <>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Hero />
       <Values />
       <Projects />
       <Experience />
       <Technologies />
-    </>
+    </div>
   );
 }
