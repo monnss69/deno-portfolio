@@ -172,16 +172,15 @@ const Projects = () => {
       ]
     },
     {
-      title: "Quantitative Research Platform",
-      description: "Financial analysis platform for loan default prediction",
-      period: "Jan 2025",
+      title: "Quantitative Research Virtual Internship",
+      description: "Financial analysis project for loan default prediction",
+      period: "JPMorgan Chase & Co. Jan 2025",
       type: "Data Science",
       icon: "logos:python",
       tech: ["Python", "Pandas", "NumPy", "Scikit-learn", "Jupyter"],
       highlights: [
         "Built predictive models for loan default probability",
         "Implemented dynamic programming algorithms for FICO score analysis",
-        "Created data visualization dashboard for risk metrics",
         "Developed automated data processing pipeline"
       ]
     }
