@@ -1,8 +1,8 @@
-import TypingAnimation from "../islands/TypingAnimation.tsx";
 import { Icon, loadIcons } from "@iconify-icon/react";
-import Wave from "../components/Wave.tsx";
+import TypingAnimation from "../islands/TypingAnimation.tsx";
+import TechnologiesSection from "../islands/TechnologiesSection.tsx";
 
-// Preload icons for technologies
+// Preload commonly used icons
 loadIcons([
   "majesticons:suitcase",
   "tabler:calendar-filled",
@@ -11,25 +11,19 @@ loadIcons([
   "logos:typescript-icon",
   "logos:go",
   "logos:postgresql",
-  "vscode-icons:file-type-js-official",
   "logos:tailwindcss-icon",
   "logos:express",
   "logos:playwright",
-  "logos:docker-icon",
-  "carbon:chart-line",
-  "carbon:model-alt"
+  "carbon:chart-line"
 ]);
 
 const Hero = () => {
   return (
-    <div className="relative overflow-hidden">
-      {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 backdrop-blur-sm"></div>
-      
+    <div className="relative min-h-screen flex items-center">
       <div className="container mx-auto px-4 py-20">
-        <div className="max-w-3xl relative z-10">
+        <div className="max-w-3xl">
           <h1 className="text-6xl font-bold mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+            <span className="text-primary">
               <TypingAnimation
                 strings={[
                   "Hello, I'm Minh",
@@ -41,27 +35,33 @@ const Hero = () => {
             </span>
           </h1>
           
-          <div className="space-y-4">
-            <p className="text-xl text-gray-600 dark:text-gray-300">
-              Computer Science student at NUS (GPA: 4.83/5.0)
+          <div className="space-y-6">
+            <p className="text-2xl text-gray-200">
+              Computer Science student at NUS 
+              <span className="text-primary ml-2 font-semibold">
+                (GPA: 4.83/5.0)
+              </span>
             </p>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Specializing in full-stack development and quantitative analysis, with experience in healthcare tech and financial modeling.
+            <p className="text-xl text-gray-300">
+              Specializing in full-stack development and quantitative analysis, 
+              with experience in healthcare tech and financial modeling.
             </p>
             
-            <div className="flex gap-4 mt-8">
+            <div className="flex gap-4 pt-4">
               <a 
                 href="/cv.pdf" 
-                className="btn btn-primary"
+                className="btn btn-primary btn-lg"
                 download
               >
+                <Icon icon="majesticons:document" className="w-5 h-5 mr-2" />
                 Download CV
               </a>
               <a 
                 href="https://github.com/monnss69" 
                 target="_blank"
-                className="btn btn-outline"
+                className="btn btn-outline btn-lg"
               >
+                <Icon icon="fa-brands:github" className="w-5 h-5 mr-2" />
                 View GitHub
               </a>
             </div>
@@ -72,54 +72,6 @@ const Hero = () => {
   );
 };
 
-const Values = () => {
-  const values = [
-    {
-      title: "Quantitative Research",
-      description: "Created 100+ financial models at WorldQuant BRAIN using advanced quantitative methods. Analyzed 120,000+ financial data fields for market prediction.",
-      icon: "carbon:chart-line",
-    },
-    {
-      title: "Full Stack Development",
-      description: "Built healthcare platforms with React & Express.js achieving 40% faster API response times. Developed secure authentication systems with JWT and bcrypt.",
-      icon: "logos:react",
-    },
-    {
-      title: "Performance Optimization",
-      description: "Achieved 96+ Lighthouse score through optimized React architecture and responsive design. Maintained 99% uptime via automated deployment.",
-      icon: "carbon:optimization",
-    },
-  ];
-
-  return (
-    <>
-      <Wave flip={false} />
-      <section className="bg-primary py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((value, i) => (
-              <div
-                key={i}
-                className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-xl transform transition-all duration-300 hover:scale-105 hover:rotate-1"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <Icon icon={value.icon} className="w-8 h-8 text-primary" />
-                  <h2 className="text-xl font-bold text-gray-800 dark:text-white">
-                    {value.title}
-                  </h2>
-                </div>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {value.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <Wave flip={true} />
-    </>
-  );
-};
 const Experience = () => {
   const experiences = [
     {
@@ -143,17 +95,6 @@ const Experience = () => {
         "Created 100+ quantitative financial models (Alphas)",
         "Analyzed 120,000+ financial data fields across diverse instruments",
         "Developed market prediction models using WorldQuant's BRAIN platform"
-      ]
-    },
-    {
-      title: "Quantitative Research Virtual Program",
-      company: "JPMorgan Chase & Co.",
-      timePeriod: "Jan 2025",
-      location: "Remote",
-      highlights: [
-        "Completed simulation focused on quantitative research methods",
-        "Analyzed loan books for default probability estimation",
-        "Implemented dynamic programming for FICO score categorization"
       ]
     }
   ];
@@ -228,12 +169,20 @@ const Projects = () => {
         "Implemented JWT authentication & bcrypt password hashing",
         "Achieved 96+ Lighthouse performance score",
         "Maintained 99% uptime via Vercel deployment"
-      ],
-      metrics: [
-        { label: "Active Users", value: "1000+" },
-        { label: "Performance Score", value: "96+" },
-        { label: "Uptime", value: "99%" },
-        { label: "Categories", value: "3" }
+      ]
+    },
+    {
+      title: "Quantitative Research Platform",
+      description: "Financial analysis platform for loan default prediction",
+      period: "Jan 2025",
+      type: "Data Science",
+      icon: "logos:python",
+      tech: ["Python", "Pandas", "NumPy", "Scikit-learn", "Jupyter"],
+      highlights: [
+        "Built predictive models for loan default probability",
+        "Implemented dynamic programming algorithms for FICO score analysis",
+        "Created data visualization dashboard for risk metrics",
+        "Developed automated data processing pipeline"
       ]
     }
   ];
@@ -244,88 +193,85 @@ const Projects = () => {
         Featured Projects
       </h2>
       
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project, i) => (
           <div
             key={i}
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden mb-8 transform transition-all duration-300 hover:scale-[1.02]"
+            className="bg-base-200 rounded-xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-[1.02] border border-base-300"
           >
             <div className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <Icon icon={project.icon} className="w-10 h-10" />
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      {project.description}
-                    </p>
-                  </div>
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-base-300 rounded-lg">
+                  <Icon icon={project.icon} className="w-8 h-8" />
                 </div>
-                <div className="flex gap-2">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    className="btn btn-circle btn-ghost"
-                    aria-label="GitHub"
-                  >
-                    <Icon icon="fa-brands:github" className="w-6 h-6" />
-                  </a>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    className="btn btn-circle btn-primary"
-                    aria-label="Live Demo"
-                  >
-                    <Icon icon="majesticons:external-link" className="w-6 h-6" />
-                  </a>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-200">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    {project.period}
+                  </p>
                 </div>
+                <span className="ml-auto px-3 py-1 rounded-full bg-primary/10 text-primary text-sm">
+                  {project.type}
+                </span>
               </div>
 
+              <p className="text-gray-300 mb-4">
+                {project.description}
+              </p>
+
               {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map((tech, j) => (
                   <span
                     key={j}
-                    className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm"
+                    className="px-2 py-1 rounded-md bg-base-300 text-gray-200 text-sm"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              {/* Metrics Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                {project.metrics.map((metric, k) => (
-                  <div
-                    key={k}
-                    className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center"
-                  >
-                    <div className="text-2xl font-bold text-primary">
-                      {metric.value}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">
-                      {metric.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
               {/* Highlights */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <ul className="space-y-2 mb-4">
                 {project.highlights.map((highlight, l) => (
-                  <div key={l} className="flex items-start gap-2">
+                  <li key={l} className="flex items-start gap-2">
                     <Icon
                       icon="majesticons:check-circle"
                       className="w-5 h-5 text-primary flex-shrink-0 mt-1"
                     />
-                    <span className="text-gray-600 dark:text-gray-300">
+                    <span className="text-gray-300">
                       {highlight}
                     </span>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
+
+              {/* Links */}
+              {project.link && (
+                <div className="flex gap-3 mt-4 pt-4 border-t border-base-300">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      className="btn btn-sm btn-ghost gap-2"
+                    >
+                      <Icon icon="fa-brands:github" className="w-4 h-4" />
+                      View Code
+                    </a>
+                  )}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    className="btn btn-sm btn-primary gap-2"
+                  >
+                    <Icon icon="majesticons:external-link" className="w-4 h-4" />
+                    Live Demo
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         ))}
@@ -334,95 +280,46 @@ const Projects = () => {
   );
 };
 
-const Technologies = () => {
-  const techCategories = [
+const Values = () => {
+  const values = [
     {
-      name: "Frontend Development",
-      techs: [
-        { name: "React", icon: "logos:react" },
-        { name: "TypeScript", icon: "logos:typescript-icon" },
-        { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
-        { name: "Framer Motion", icon: "logos:framer" }
-      ]
+      title: "Quantitative Research",
+      description: "Created 100+ financial models at WorldQuant BRAIN using advanced quantitative methods. Analyzed 120,000+ financial data fields for market prediction.",
+      icon: "carbon:chart-line",
     },
     {
-      name: "Backend Development",
-      techs: [
-        { name: "Go", icon: "logos:go" },
-        { name: "Express.js", icon: "logos:express" },
-        { name: "PostgreSQL", icon: "logos:postgresql" },
-        { name: "JWT", icon: "logos:jwt-icon" }
-      ]
+      title: "Full Stack Development",
+      description: "Built healthcare platforms with React & Express.js achieving 40% faster API response times. Developed secure authentication systems with JWT and bcrypt.",
+      icon: "logos:react",
     },
     {
-      name: "Testing & DevOps",
-      techs: [
-        { name: "Playwright", icon: "logos:playwright" },
-        { name: "Vercel", icon: "logos:vercel-icon" },
-        { name: "Supabase", icon: "logos:supabase-icon" },
-        { name: "GitHub Actions", icon: "logos:github-actions" }
-      ]
-    }
+      title: "Performance Optimization",
+      description: "Achieved 96+ Lighthouse score through optimized React architecture and responsive design. Maintained 99% uptime via automated deployment.",
+      icon: "carbon:optimization",
+    },
   ];
 
   return (
-    <section className="container mx-auto px-4 py-16">
-      <h2 className="text-4xl font-bold text-primary text-center mb-12">
-        Technologies & Skills
-      </h2>
-      
-      <div className="max-w-5xl mx-auto space-y-12">
-        {techCategories.map((category, i) => (
-          <div key={i} className="space-y-4">
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
-              {category.name}
-            </h3>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {category.techs.map((tech, j) => (
-                <div
-                  key={j}
-                  className="group bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                >
-                  <div className="flex flex-col items-center gap-3">
-                    <Icon
-                      icon={tech.icon}
-                      className="w-12 h-12 transition-transform duration-300 group-hover:scale-110"
-                    />
-                    <span className="text-gray-600 dark:text-gray-300 font-medium">
-                      {tech.name}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Additional Skills */}
-      <div className="mt-16 max-w-3xl mx-auto">
-        <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">
-          Additional Skills
-        </h3>
-        <div className="flex flex-wrap justify-center gap-3">
-          {[
-            "Quantitative Analysis",
-            "Financial Modeling",
-            "UI/UX Design",
-            "RESTful APIs",
-            "Authentication Systems",
-            "Performance Optimization",
-            "Dynamic Programming",
-            "Data Structures",
-            "Algorithms"
-          ].map((skill, i) => (
-            <span
+    <section className="py-20 bg-base-200">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {values.map((value, i) => (
+            <div
               key={i}
-              className="px-4 py-2 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-300"
+              className="bg-base-100 rounded-xl p-6 shadow-xl transform transition-all duration-300 hover:scale-105 border border-base-300"
             >
-              {skill}
-            </span>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Icon icon={value.icon} className="w-8 h-8 text-primary" />
+                </div>
+                <h2 className="text-xl font-bold text-gray-200">
+                  {value.title}
+                </h2>
+              </div>
+              <p className="text-gray-300 leading-relaxed">
+                {value.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>
@@ -430,17 +327,15 @@ const Technologies = () => {
   );
 };
 
-
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-base-100 to-base-200 relative">
-      <div className="absolute inset-0 bg-[url('/background.webp')] opacity-10 bg-cover bg-center bg-no-repeat pointer-events-none"></div>
+    <div className="min-h-screen bg-gradient-to-br from-base-100 to-base-200">
       <div className="relative z-10">
         <Hero />
-        <Values />
-        <Projects />
         <Experience />
-        <Technologies />
+        <Projects />
+        <Values />
+        <TechnologiesSection />
       </div>
     </div>
   );

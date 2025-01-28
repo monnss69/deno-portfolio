@@ -2,19 +2,18 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $Hero_index from "./routes/Hero/index.tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_joke from "./routes/api/joke.ts";
 import * as $api_themes_index from "./routes/api/themes/index.ts";
 import * as $index from "./routes/index.tsx";
 import * as $AppBar from "./islands/AppBar.tsx";
+import * as $TechnologiesSection from "./islands/TechnologiesSection.tsx";
 import * as $TypingAnimation from "./islands/TypingAnimation.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/Hero/index.tsx": $Hero_index,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/api/joke.ts": $api_joke,
@@ -23,6 +22,7 @@ const manifest = {
   },
   islands: {
     "./islands/AppBar.tsx": $AppBar,
+    "./islands/TechnologiesSection.tsx": $TechnologiesSection,
     "./islands/TypingAnimation.tsx": $TypingAnimation,
   },
   baseUrl: import.meta.url,
