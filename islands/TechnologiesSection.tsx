@@ -13,19 +13,19 @@ export default function TechnologiesSection() {
         {
           name: "Frontend",
           items: [
-            { name: "React", level: 90, icon: "logos:react" },
-            { name: "TypeScript", level: 85, icon: "logos:typescript-icon" },
-            { name: "Tailwind CSS", level: 90, icon: "logos:tailwindcss-icon" },
-            { name: "Framer Motion", level: 80, icon: "logos:framer" }
+            { name: "React", icon: "logos:react" },
+            { name: "TypeScript", icon: "logos:typescript-icon" },
+            { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
+            { name: "Framer Motion", icon: "logos:framer" }
           ]
         },
         {
           name: "Backend",
           items: [
-            { name: "Go", level: 85, icon: "logos:go" },
-            { name: "Express.js", level: 85, icon: "logos:express" },
-            { name: "PostgreSQL", level: 80, icon: "logos:postgresql" },
-            { name: "Node.js", level: 85, icon: "logos:nodejs" }
+            { name: "Go", icon: "logos:go" },
+            { name: "Express.js", icon: "logos:express" },
+            { name: "PostgreSQL", icon: "logos:postgresql" },
+            { name: "Node.js", icon: "logos:nodejs" }
           ]
         }
       ]
@@ -37,19 +37,19 @@ export default function TechnologiesSection() {
         {
           name: "Data Analysis",
           items: [
-            { name: "Python", level: 90, icon: "logos:python" },
-            { name: "Pandas", level: 85, icon: "logos:pandas" },
-            { name: "NumPy", level: 80, icon: "logos:numpy" },
-            { name: "Jupyter", level: 85, icon: "logos:jupyter" }
+            { name: "Python", icon: "logos:python" },
+            { name: "Pandas", icon: "logos:pandas" },
+            { name: "NumPy", icon: "logos:numpy" },
+            { name: "Jupyter", icon: "logos:jupyter" }
           ]
         },
         {
           name: "Financial",
           items: [
-            { name: "WorldQuant", level: 85, icon: "carbon:chart-line" },
-            { name: "Quantitative", level: 80, icon: "carbon:model" },
-            { name: "Risk Analysis", level: 75, icon: "carbon:analytics" },
-            { name: "Financial Modeling", level: 80, icon: "carbon:finance" }
+            { name: "WorldQuant", icon: "carbon:chart-line" },
+            { name: "Quantitative", icon: "carbon:model" },
+            { name: "Risk Analysis", icon: "carbon:analytics" },
+            { name: "Financial Modeling", icon: "carbon:finance" }
           ]
         }
       ]
@@ -61,19 +61,19 @@ export default function TechnologiesSection() {
         {
           name: "Testing & DevOps",
           items: [
-            { name: "Playwright", level: 85, icon: "logos:playwright" },
-            { name: "Git", level: 90, icon: "logos:git" },
-            { name: "Docker", level: 75, icon: "logos:docker" },
-            { name: "CI/CD", level: 80, icon: "logos:github-actions" }
+            { name: "Playwright", icon: "logos:playwright" },
+            { name: "Git", icon: "logos:git" },
+            { name: "Docker", icon: "logos:docker" },
+            { name: "CI/CD", icon: "logos:github-actions" }
           ]
         },
         {
           name: "Development",
           items: [
-            { name: "VS Code", level: 90, icon: "logos:visual-studio-code" },
-            { name: "Vercel", level: 85, icon: "logos:vercel" },
-            { name: "Postman", level: 80, icon: "logos:postman" },
-            { name: "Figma", level: 75, icon: "logos:figma" }
+            { name: "VS Code", icon: "logos:visual-studio-code" },
+            { name: "Vercel", icon: "logos:vercel" },
+            { name: "Postman", icon: "logos:postman" },
+            { name: "Figma", icon: "logos:figma" }
           ]
         }
       ]
@@ -114,23 +114,19 @@ export default function TechnologiesSection() {
               <h3 className="text-xl font-bold text-gray-200 mb-4">
                 {skillGroup.name}
               </h3>
-              <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
                 {skillGroup.items.map((skill, j) => (
-                  <div key={j} className="bg-base-200 p-4 rounded-lg">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Icon icon={skill.icon} className="w-6 h-6" />
+                  <div 
+                    key={j} 
+                    className="bg-base-200 p-4 rounded-lg transform transition-all duration-300 hover:scale-105 hover:bg-base-300"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-base-300 rounded-lg">
+                        <Icon icon={skill.icon} className="w-6 h-6" />
+                      </div>
                       <span className="text-gray-200 font-medium">
                         {skill.name}
                       </span>
-                      <span className="ml-auto text-gray-400 text-sm">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="w-full bg-base-300 rounded-full h-2">
-                      <div
-                        className="bg-primary h-2 rounded-full transition-all duration-500"
-                        style={{ width: `${skill.level}%` }}
-                      />
                     </div>
                   </div>
                 ))}
