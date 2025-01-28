@@ -30,7 +30,7 @@ export function Technologies() {
         <div className="max-w-4xl mx-auto space-y-8">
           {categories.map((category, index) => (
             <motion.div
-              key={category}
+              key={index}
               variants={fadeIn('up')}
               className="card bg-base-100 shadow-xl"
             >
