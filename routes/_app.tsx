@@ -1,43 +1,7 @@
+// routes/_app.tsx
 import { type PageProps } from "$fresh/server.ts";
 import AppBar from "../islands/AppBar.tsx";
 import { Icon } from "@iconify-icon/react";
-
-function MetaTags(
-  { credentials, url }: { credentials: { name: string }; url: string },
-) {
-  return (
-    <>
-      {/* Primary Meta Tags */}
-      <title>
-        ${credentials.name} - Developer's Codefolio
-      </title>
-      <meta
-        name="title"
-        content={`${credentials.name} - Developer's Codefolio`}
-      />
-      <meta
-        name="description"
-        content={`My name is Pham Hai Minh. Explore my portfolio showcasing a diverse range of web development projects. Specializing in full-stack development with expertise in JavaScript, React, Node.js, and more. Discover how I can bring your web vision to life.`}
-      />
-
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={`${url}`} />
-      <meta
-        property="og:title"
-        content={`${credentials.name} - Developer's Codefolio`}
-      />
-      <meta
-        property="og:description"
-        content={`My name is Pham Hai Minh. Explore my portfolio showcasing a diverse range of web development projects. Specializing in full-stack development with expertise in JavaScript, React, Node.js, and more. Discover how I can bring your web vision to life.`}
-      />
-      <meta
-        property="og:image"
-        content={`${url}meta-image.webp`}
-      />
-    </>
-  );
-}
 
 export default function App({ Component }: PageProps) {
   const socials = [
@@ -51,45 +15,69 @@ export default function App({ Component }: PageProps) {
       url: "https://www.linkedin.com/in/ph%E1%BA%A1m-h%E1%BA%A3i-minh-74950829b/",
       icon: "fa-brands:linkedin",
     },
+    {
+      name: "Email",
+      url: "mailto:e1375556@u.nus.edu",
+      icon: "fa-regular:envelope",
+    }
   ];
 
   const credentials = {
     name: "Pham Hai Minh",
+    title: "Full Stack Developer & Quantitative Analyst",
+    email: "e1375556@u.nus.edu",
+    location: "Singapore",
   };
 
-  const url = "https://opensource-portfolio.deno.dev/";
-
   return (
-    <html lang="en">
+    <html lang="en" data-theme="modern">
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <MetaTags credentials={credentials} url={url} />
-        <title>Developer Portfolio | {credentials.name}</title>
+        <title>{credentials.name} - {credentials.title}</title>
+        <meta
+          name="description"
+          content="Computer Science student at NUS specializing in full-stack development and quantitative analysis. Experience in healthcare tech and financial modeling."
+        />
         <link rel="stylesheet" href="/styles.css" />
       </head>
-      <body class="min-h-screen flex flex-col max-w-screen-xl mx-auto">
-        <header>
+      <body className="min-h-screen flex flex-col bg-gradient-to-br from-base-100 to-base-200">
+        <header className="sticky top-0 z-50 backdrop-blur-sm bg-base-100/80 border-b border-base-200">
           <AppBar />
         </header>
-        <main>
+        
+        <main className="flex-1">
           <Component />
         </main>
-        <footer class="mt-auto footer w-auto m-2 p-4 bg-neutral text-neutral-content rounded-lg">
-          <p class="text-center">
-            Redesigned by {credentials.name}
-          </p>
-          <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-            {socials.map((social) => (
-              <a
-                href={social.url}
-                target="_blank"
-                aria-label={social.name}
-              >
-                <Icon icon={social.icon} width="24" height="24" />
-              </a>
-            ))}
-          </nav>
+        
+        <footer className="bg-neutral text-neutral-content mt-auto">
+          <div className="container mx-auto px-4 py-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="text-center md:text-left">
+                <h3 className="text-xl font-bold">{credentials.name}</h3>
+                <p className="text-sm opacity-75">{credentials.title}</p>
+              </div>
+              
+              <div className="flex items-center gap-6">
+                {socials.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary transition-colors duration-300"
+                    aria-label={social.name}
+                  >
+                    <Icon icon={social.icon} className="w-6 h-6" />
+                  </a>
+                ))}
+              </div>
+            </div>
+            
+            <div className="mt-8 pt-4 border-t border-neutral-content/20 text-center text-sm opacity-75">
+              © {new Date().getFullYear()} {credentials.name}. All rights reserved.
+            </div>
+          </div>
         </footer>
       </body>
     </html>
